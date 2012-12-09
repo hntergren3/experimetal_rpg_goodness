@@ -1,5 +1,4 @@
 #include "actor.h"
-
 actor_t::actor_t(const std::string name, const hit_point_t max){
 	m_name = name;
     m_max_hp = max;
@@ -12,19 +11,23 @@ actor_t::actor_t(const actor_t& rhs){
 	m_cur_hp = m_cur_hp;
 }
 
-actor_t::hit_point_t cur_hp() const {
+hit_point_t actor_t::cur_hp() const {
 	return m_cur_hp;
 }
 
-actor_t::hit_point_t& mutable_cur_hp() {
+hit_point_t * actor_t::mutable_cur_hp() {
 	return &m_cur_hp;
 }
 
-actor_t::hit_point_t max_hp() const {
+hit_point_t actor_t::max_hp() const {
 	return m_max_hp;
 }
 
-std::string actor_tget_name() const {
+hit_point_t * actor_t::mutable_max_hp(){
+	return &m_max_hp;
+}
+
+std::string actor_t::get_name() const {
 	return m_name;
 }
 
