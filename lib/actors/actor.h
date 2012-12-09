@@ -17,7 +17,7 @@ class actor_t {
 		hit_point_t max_hp() const ;
         hit_point_t * mutable_max_hp();
 
-		std::string get_name() const ;
+		std::string name() const ;
 
 		void set_max_hp(hit_point_t hp);
 		void inc_max_hp(hit_point_t amount);

@@ -25,7 +25,7 @@ combatant_t::combatant_t(std::string name, hit_point_t hp, speed_t s, acc_t a, p
 }
 
 combatant_t::combatant_t(const combatant_t& other)
-: actor_t(other.get_name(), other.max_hp())
+: actor_t(other.name(), other.max_hp())
 {
 	m_speed = other.m_speed;
 	m_accuracy = other.m_accuracy;
@@ -33,19 +33,19 @@ combatant_t::combatant_t(const combatant_t& other)
 	m_mag = other.m_mag;
 }
 	
-speed_t combatant_t::get_speed () const {
+speed_t combatant_t::speed () const {
 	return m_speed;
 }
-acc_t combatant_t::get_accuracy() const{
+acc_t combatant_t::accuracy() const{
 	return m_accuracy;
 }
-phys_t combatant_t::get_phys() const{
+phys_t combatant_t::phys() const{
 	return m_phys;
 }
-mag_t combatant_t::get_mag() const{
+mag_t combatant_t::mag() const{
 	return m_mag;
 }
-experience_t combatant_t::get_xp() const{
+experience_t combatant_t::xp() const{
 	return m_xp;
 }
 
@@ -92,10 +92,10 @@ void combatant_t::dec_mag(mag_t amount){
 }
 
 bool combatant_t::operator==(const combatant_t them) const{
-	return (this->get_name() == them.get_name() && this->max_hp() == them.max_hp() && 
-	        this->cur_hp() == them.cur_hp() && this->m_speed == them.get_speed() &&
-			this->m_accuracy == them.get_accuracy() && this->m_phys == them.get_phys() &&
-			this->m_mag == them.get_mag());
+	return (this->name() == them.name() && this->max_hp() == them.max_hp() && 
+	        this->cur_hp() == them.cur_hp() && this->m_speed == them.speed() &&
+			this->m_accuracy == them.accuracy() && this->m_phys == them.phys() &&
+			this->m_mag == them.mag());
 }
 bool combatant_t::operator!=(const combatant_t them) const{
 	return *this == them;

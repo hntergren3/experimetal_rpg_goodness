@@ -27,7 +27,7 @@ hit_point_t * actor_t::mutable_max_hp(){
 	return &m_max_hp;
 }
 
-std::string actor_t::get_name() const {
+std::string actor_t::name() const {
 	return m_name;
 }
 
