@@ -62,22 +62,19 @@ class combatant_t : public actor_t {
 	}
 
 	void set_speed(speed_t speed){
-		speed < MIN_STAT ? m_speed = MIN_STAT : m_speed = speed;
-		speed > MAX_STAT ? m_speed = MAX_STAT : m_speed = speed;
+
+		set_stat(m_speed, speed, MIN_STAT, MAX_STAT);
 	}
 
 	void set_accuracy(acc_t acc){
-		acc < MIN_STAT ? m_accuracy = MIN_STAT : m_accuracy = acc;
-		acc > MAX_STAT ? m_accuracy = MAX_STAT : m_accuracy = acc;
+		set_stat(m_accuracy, acc, MIN_STAT, MAX_STAT);
 	}
 
 	void set_phys(phys_t phys){
-		phys < MIN_STAT ? m_phys = MIN_STAT : m_phys = phys;
-		phys > MAX_STAT ? m_phys = MAX_STAT : m_phys = phys;
+		set_stat(m_phys, phys, MIN_STAT, MAX_STAT);
 	}
 	void set_mag(mag_t mag){
-		mag < MIN_STAT ? m_mag = MIN_STAT : m_mag = mag;
-		mag > MAX_STAT ? m_mag = MAX_STAT : m_mag = mag;
+		set_stat(m_mag, mag, MIN_STAT, MAX_STAT);
 	}
 
 	void inc_speed(speed_t amount){
