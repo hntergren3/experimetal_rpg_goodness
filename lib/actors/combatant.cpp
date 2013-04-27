@@ -28,8 +28,25 @@ stats_set_t combatant_t::stats_set() const{
 
 bool combatant_t::operator==(const combatant_t them) const{
 	return (this->name() == them.name() && this->max_hp() == them.max_hp() && 
-	        this->cur_hp() == them.cur_hp() && this->m_stats_set == them.stats_set());
+	        this->cur_hp() == them.cur_hp() && this->stats_set() == them.stats_set());
 }
 bool combatant_t::operator!=(const combatant_t them) const{
 	return *this == them;
+}
+
+bool combatant_t::operator>(const combatant_t them) const{
+  return this->ct() > them.ct();
+}
+
+void combatant_t::act(){
+  std::cout << "my turn to act!" << std::end;
+  reset_ct();
+}
+
+void combatant_t::reset_ct(){
+  set_ct(0);
+}
+
+void combatant_t::increment_ct(){
+  m_ct += stats_set().ct(); 
 }

@@ -9,25 +9,25 @@
 
 class actor_t {
 	public:
-	    actor_t(const std::string name, const hit_point_t max);
+	  actor_t(const std::string name, const hit_point_t max);
 		actor_t(const actor_t& rhs);
 
 		hit_point_t cur_hp() const ;
 		hit_point_t * mutable_cur_hp();
 		hit_point_t max_hp() const ;
-        hit_point_t * mutable_max_hp();
+    hit_point_t * mutable_max_hp();
 
 		std::string name() const ;
 
 		void set_max_hp(hit_point_t hp);
 		void inc_max_hp(hit_point_t amount);
 		void dec_max_hp(hit_point_t amount);
-        void set_cur_hp(hit_point_t hp);
+    void set_cur_hp(hit_point_t hp);
 
         //make life easier when I want to do min/max checking...this will probably end up
 		//in some kind of overall utility file at some point, though then I'll have to
 		//provide ways to get a references for various values instead of just values...bleh
-        template <class T>
+    template <class T>
 		void set_stat(T& my_stat, const T in_stat, int min, int max);
 
 		void inc_cur_hp(hit_point_t amount);
