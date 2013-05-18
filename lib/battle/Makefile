@@ -113,14 +113,14 @@ rebuild_cache/fast: rebuild_cache
 
 # The main all target
 all: cmake_check_build_system
-	cd /Users/hntergren3/Development/experimetal_rpg_goodness && $(CMAKE_COMMAND) -E cmake_progress_start /Users/hntergren3/Development/experimetal_rpg_goodness/CMakeFiles /Users/hntergren3/Development/experimetal_rpg_goodness/lib/actors/CMakeFiles/progress.marks
-	cd /Users/hntergren3/Development/experimetal_rpg_goodness && $(MAKE) -f CMakeFiles/Makefile2 lib/actors/all
+	cd /Users/hntergren3/Development/experimetal_rpg_goodness && $(CMAKE_COMMAND) -E cmake_progress_start /Users/hntergren3/Development/experimetal_rpg_goodness/CMakeFiles /Users/hntergren3/Development/experimetal_rpg_goodness/lib/battle/CMakeFiles/progress.marks
+	cd /Users/hntergren3/Development/experimetal_rpg_goodness && $(MAKE) -f CMakeFiles/Makefile2 lib/battle/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /Users/hntergren3/Development/experimetal_rpg_goodness/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
 clean:
-	cd /Users/hntergren3/Development/experimetal_rpg_goodness && $(MAKE) -f CMakeFiles/Makefile2 lib/actors/clean
+	cd /Users/hntergren3/Development/experimetal_rpg_goodness && $(MAKE) -f CMakeFiles/Makefile2 lib/battle/clean
 .PHONY : clean
 
 # The main clean target
@@ -129,12 +129,12 @@ clean/fast: clean
 
 # Prepare targets for installation.
 preinstall: all
-	cd /Users/hntergren3/Development/experimetal_rpg_goodness && $(MAKE) -f CMakeFiles/Makefile2 lib/actors/preinstall
+	cd /Users/hntergren3/Development/experimetal_rpg_goodness && $(MAKE) -f CMakeFiles/Makefile2 lib/battle/preinstall
 .PHONY : preinstall
 
 # Prepare targets for installation.
 preinstall/fast:
-	cd /Users/hntergren3/Development/experimetal_rpg_goodness && $(MAKE) -f CMakeFiles/Makefile2 lib/actors/preinstall
+	cd /Users/hntergren3/Development/experimetal_rpg_goodness && $(MAKE) -f CMakeFiles/Makefile2 lib/battle/preinstall
 .PHONY : preinstall/fast
 
 # clear depends
@@ -143,90 +143,42 @@ depend:
 .PHONY : depend
 
 # Convenience name for target.
-lib/actors/CMakeFiles/combatants.dir/rule:
-	cd /Users/hntergren3/Development/experimetal_rpg_goodness && $(MAKE) -f CMakeFiles/Makefile2 lib/actors/CMakeFiles/combatants.dir/rule
-.PHONY : lib/actors/CMakeFiles/combatants.dir/rule
+lib/battle/CMakeFiles/battle.dir/rule:
+	cd /Users/hntergren3/Development/experimetal_rpg_goodness && $(MAKE) -f CMakeFiles/Makefile2 lib/battle/CMakeFiles/battle.dir/rule
+.PHONY : lib/battle/CMakeFiles/battle.dir/rule
 
 # Convenience name for target.
-combatants: lib/actors/CMakeFiles/combatants.dir/rule
-.PHONY : combatants
+battle: lib/battle/CMakeFiles/battle.dir/rule
+.PHONY : battle
 
 # fast build rule for target.
-combatants/fast:
-	cd /Users/hntergren3/Development/experimetal_rpg_goodness && $(MAKE) -f lib/actors/CMakeFiles/combatants.dir/build.make lib/actors/CMakeFiles/combatants.dir/build
-.PHONY : combatants/fast
+battle/fast:
+	cd /Users/hntergren3/Development/experimetal_rpg_goodness && $(MAKE) -f lib/battle/CMakeFiles/battle.dir/build.make lib/battle/CMakeFiles/battle.dir/build
+.PHONY : battle/fast
 
-actor.o: actor.cpp.o
-.PHONY : actor.o
-
-# target to build an object file
-actor.cpp.o:
-	cd /Users/hntergren3/Development/experimetal_rpg_goodness && $(MAKE) -f lib/actors/CMakeFiles/combatants.dir/build.make lib/actors/CMakeFiles/combatants.dir/actor.cpp.o
-.PHONY : actor.cpp.o
-
-actor.i: actor.cpp.i
-.PHONY : actor.i
-
-# target to preprocess a source file
-actor.cpp.i:
-	cd /Users/hntergren3/Development/experimetal_rpg_goodness && $(MAKE) -f lib/actors/CMakeFiles/combatants.dir/build.make lib/actors/CMakeFiles/combatants.dir/actor.cpp.i
-.PHONY : actor.cpp.i
-
-actor.s: actor.cpp.s
-.PHONY : actor.s
-
-# target to generate assembly for a file
-actor.cpp.s:
-	cd /Users/hntergren3/Development/experimetal_rpg_goodness && $(MAKE) -f lib/actors/CMakeFiles/combatants.dir/build.make lib/actors/CMakeFiles/combatants.dir/actor.cpp.s
-.PHONY : actor.cpp.s
-
-combatant.o: combatant.cpp.o
-.PHONY : combatant.o
+battle.o: battle.cpp.o
+.PHONY : battle.o
 
 # target to build an object file
-combatant.cpp.o:
-	cd /Users/hntergren3/Development/experimetal_rpg_goodness && $(MAKE) -f lib/actors/CMakeFiles/combatants.dir/build.make lib/actors/CMakeFiles/combatants.dir/combatant.cpp.o
-.PHONY : combatant.cpp.o
+battle.cpp.o:
+	cd /Users/hntergren3/Development/experimetal_rpg_goodness && $(MAKE) -f lib/battle/CMakeFiles/battle.dir/build.make lib/battle/CMakeFiles/battle.dir/battle.cpp.o
+.PHONY : battle.cpp.o
 
-combatant.i: combatant.cpp.i
-.PHONY : combatant.i
-
-# target to preprocess a source file
-combatant.cpp.i:
-	cd /Users/hntergren3/Development/experimetal_rpg_goodness && $(MAKE) -f lib/actors/CMakeFiles/combatants.dir/build.make lib/actors/CMakeFiles/combatants.dir/combatant.cpp.i
-.PHONY : combatant.cpp.i
-
-combatant.s: combatant.cpp.s
-.PHONY : combatant.s
-
-# target to generate assembly for a file
-combatant.cpp.s:
-	cd /Users/hntergren3/Development/experimetal_rpg_goodness && $(MAKE) -f lib/actors/CMakeFiles/combatants.dir/build.make lib/actors/CMakeFiles/combatants.dir/combatant.cpp.s
-.PHONY : combatant.cpp.s
-
-stats_set.o: stats_set.cpp.o
-.PHONY : stats_set.o
-
-# target to build an object file
-stats_set.cpp.o:
-	cd /Users/hntergren3/Development/experimetal_rpg_goodness && $(MAKE) -f lib/actors/CMakeFiles/combatants.dir/build.make lib/actors/CMakeFiles/combatants.dir/stats_set.cpp.o
-.PHONY : stats_set.cpp.o
-
-stats_set.i: stats_set.cpp.i
-.PHONY : stats_set.i
+battle.i: battle.cpp.i
+.PHONY : battle.i
 
 # target to preprocess a source file
-stats_set.cpp.i:
-	cd /Users/hntergren3/Development/experimetal_rpg_goodness && $(MAKE) -f lib/actors/CMakeFiles/combatants.dir/build.make lib/actors/CMakeFiles/combatants.dir/stats_set.cpp.i
-.PHONY : stats_set.cpp.i
+battle.cpp.i:
+	cd /Users/hntergren3/Development/experimetal_rpg_goodness && $(MAKE) -f lib/battle/CMakeFiles/battle.dir/build.make lib/battle/CMakeFiles/battle.dir/battle.cpp.i
+.PHONY : battle.cpp.i
 
-stats_set.s: stats_set.cpp.s
-.PHONY : stats_set.s
+battle.s: battle.cpp.s
+.PHONY : battle.s
 
 # target to generate assembly for a file
-stats_set.cpp.s:
-	cd /Users/hntergren3/Development/experimetal_rpg_goodness && $(MAKE) -f lib/actors/CMakeFiles/combatants.dir/build.make lib/actors/CMakeFiles/combatants.dir/stats_set.cpp.s
-.PHONY : stats_set.cpp.s
+battle.cpp.s:
+	cd /Users/hntergren3/Development/experimetal_rpg_goodness && $(MAKE) -f lib/battle/CMakeFiles/battle.dir/build.make lib/battle/CMakeFiles/battle.dir/battle.cpp.s
+.PHONY : battle.cpp.s
 
 # Help Target
 help:
@@ -234,22 +186,16 @@ help:
 	@echo "... all (the default if no target is provided)"
 	@echo "... clean"
 	@echo "... depend"
-	@echo "... combatants"
+	@echo "... battle"
 	@echo "... edit_cache"
 	@echo "... install"
 	@echo "... install/local"
 	@echo "... install/strip"
 	@echo "... list_install_components"
 	@echo "... rebuild_cache"
-	@echo "... actor.o"
-	@echo "... actor.i"
-	@echo "... actor.s"
-	@echo "... combatant.o"
-	@echo "... combatant.i"
-	@echo "... combatant.s"
-	@echo "... stats_set.o"
-	@echo "... stats_set.i"
-	@echo "... stats_set.s"
+	@echo "... battle.o"
+	@echo "... battle.i"
+	@echo "... battle.s"
 .PHONY : help
 
 

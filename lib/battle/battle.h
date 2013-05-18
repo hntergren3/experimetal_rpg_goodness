@@ -1,15 +1,18 @@
 #include <boost/noncopyable.hpp>
+#include <boost/shared_ptr.hpp>
+#include <vector>
+
 #include "../actors/combatant.h"
 #include "../actors/enemy.h"
 #include "../actors/stats_set.h"
 
 #define CT_ACTION_THRESHOLD 1000
 
-typedef std::vector<Combatant> enemy_vec;
-typedef std::vector<Combatant> party_vec; 
+typedef std::vector<combatant_t> enemy_vec;
+typedef std::vector<combatant_t> party_vec; 
 
 /*
- * SortedCombatantTree takes the party and enemy
+ * SortedCombatantQueue takes the party and enemy
  * vectors by reference. Whether or not the
  * Good Guys are healed after every battle or not,
  * that's handled by the Battle class. There's 
@@ -22,20 +25,21 @@ class SortedCombatantQueue : boost::noncopyable {
 
   public:
 
-    SortedCombatanQueue(party_vec p, enemy_vec e);
+    SortedCombatantQueue(party_vec p, enemy_vec e);
     ~SortedCombatantQueue();
 
-    boost::shared_ptr<Combatant> retrieveNextActor(); 
-    bool battleContinues();
+    boost::shared_ptr<combatant_t> retrieveNextActor(); 
+    bool battleContinues() const;
 
   private:
-    bool enemiesLeft();
-    bool partyLeft();
-    speed_t actionThreshold();
-    boost::shared_ptr<Combatant> maxCtMeter();
+    bool enemiesLeft() const;
+    bool partyLeft() const;
+    speed_t actionThreshold() const;
+    boost::shared_ptr<combatant_t> maxCtMeter();
     template <class T>
     void updateCombatantVectorByCt(T&);
-    bool sortByCt(Combatant&, Combatant&);
+    static bool sortByCt(const combatant_t&, const combatant_t&);
+    void updateQueue();
 
     enemy_vec m_internal_enemy_vec;
     party_vec m_internal_party_vec; 
@@ -46,6 +50,7 @@ class SortedCombatantQueue : boost::noncopyable {
 class Battle : boost::noncopyable{
   public:
     Battle(party_vec&);
+    void main_loop();
     ~Battle(); //distribute rewards!
 
   private:

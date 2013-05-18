@@ -1,6 +1,8 @@
 #ifndef COMBATANT_H
 #define COMBATANT_H
 
+#include <iostream>
+
 #include "actor.h"
 #include "definitions.h"
 #include "stats_set.h"
@@ -15,17 +17,19 @@ class combatant_t : public actor_t {
 	~combatant_t();
 	combatant_t(const combatant_t& other);
 
-	stats_set_t stats_set() const;
+	stats_set_t  stats_set() const;
+  stats_set_t* mutable_stats_set();
 	experience_t xp() const;
-  void increment_ct();
-  speed_t ct();
-  void reset_ct();
+  void         increment_ct_meter();
+  void         reset_ct_meter();
+  speed_t      ct_meter() const;
+  void      set_ct_meter(const speed_t);
 
   void act();
 
 	bool operator==(const combatant_t them) const;
 	bool operator!=(const combatant_t them) const;
-  bool operator>(const combatant_t them) const;
+  bool operator>(const combatant_t them)  const;
 	
 
   private:

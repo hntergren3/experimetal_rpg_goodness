@@ -26,6 +26,10 @@ stats_set_t combatant_t::stats_set() const{
 	return m_stats_set;
 }
 
+stats_set_t * combatant_t::mutable_stats_set(){
+  return &m_stats_set;
+}
+
 bool combatant_t::operator==(const combatant_t them) const{
 	return (this->name() == them.name() && this->max_hp() == them.max_hp() && 
 	        this->cur_hp() == them.cur_hp() && this->stats_set() == them.stats_set());
@@ -35,18 +39,30 @@ bool combatant_t::operator!=(const combatant_t them) const{
 }
 
 bool combatant_t::operator>(const combatant_t them) const{
-  return this->ct() > them.ct();
+  return this->ct_meter() > them.ct_meter();
 }
 
 void combatant_t::act(){
-  std::cout << "my turn to act!" << std::end;
-  reset_ct();
+  std::cout << "my turn to act!" << std::endl;
+  reset_ct_meter();
 }
 
-void combatant_t::reset_ct(){
-  set_ct(0);
+void combatant_t::reset_ct_meter(){
+  set_ct_meter(0);
 }
 
-void combatant_t::increment_ct(){
-  m_ct += stats_set().ct(); 
+/*void combatant_t::set_ct_meter(const speed_t newCt){
+  m_ct_meter = newCt;
+}*/
+
+void combatant_t::increment_ct_meter(){
+  set_ct_meter(m_ct_meter + stats_set().speed());
+}
+
+speed_t combatant_t::ct_meter() const {
+    return m_ct_meter;
+}
+
+void combatant_t::set_ct_meter(const speed_t newSpeed){
+  m_ct_meter = newSpeed;
 }

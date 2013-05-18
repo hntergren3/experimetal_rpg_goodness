@@ -113,14 +113,14 @@ rebuild_cache/fast: rebuild_cache
 
 # The main all target
 all: cmake_check_build_system
-	cd /Users/hntergren3/Development/experimetal_rpg_goodness && $(CMAKE_COMMAND) -E cmake_progress_start /Users/hntergren3/Development/experimetal_rpg_goodness/CMakeFiles /Users/hntergren3/Development/experimetal_rpg_goodness/lib/actors/CMakeFiles/progress.marks
-	cd /Users/hntergren3/Development/experimetal_rpg_goodness && $(MAKE) -f CMakeFiles/Makefile2 lib/actors/all
+	cd /Users/hntergren3/Development/experimetal_rpg_goodness && $(CMAKE_COMMAND) -E cmake_progress_start /Users/hntergren3/Development/experimetal_rpg_goodness/CMakeFiles /Users/hntergren3/Development/experimetal_rpg_goodness/lib/CMakeFiles/progress.marks
+	cd /Users/hntergren3/Development/experimetal_rpg_goodness && $(MAKE) -f CMakeFiles/Makefile2 lib/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /Users/hntergren3/Development/experimetal_rpg_goodness/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
 clean:
-	cd /Users/hntergren3/Development/experimetal_rpg_goodness && $(MAKE) -f CMakeFiles/Makefile2 lib/actors/clean
+	cd /Users/hntergren3/Development/experimetal_rpg_goodness && $(MAKE) -f CMakeFiles/Makefile2 lib/clean
 .PHONY : clean
 
 # The main clean target
@@ -129,12 +129,12 @@ clean/fast: clean
 
 # Prepare targets for installation.
 preinstall: all
-	cd /Users/hntergren3/Development/experimetal_rpg_goodness && $(MAKE) -f CMakeFiles/Makefile2 lib/actors/preinstall
+	cd /Users/hntergren3/Development/experimetal_rpg_goodness && $(MAKE) -f CMakeFiles/Makefile2 lib/preinstall
 .PHONY : preinstall
 
 # Prepare targets for installation.
 preinstall/fast:
-	cd /Users/hntergren3/Development/experimetal_rpg_goodness && $(MAKE) -f CMakeFiles/Makefile2 lib/actors/preinstall
+	cd /Users/hntergren3/Development/experimetal_rpg_goodness && $(MAKE) -f CMakeFiles/Makefile2 lib/preinstall
 .PHONY : preinstall/fast
 
 # clear depends
@@ -142,114 +142,18 @@ depend:
 	cd /Users/hntergren3/Development/experimetal_rpg_goodness && $(CMAKE_COMMAND) -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
 .PHONY : depend
 
-# Convenience name for target.
-lib/actors/CMakeFiles/combatants.dir/rule:
-	cd /Users/hntergren3/Development/experimetal_rpg_goodness && $(MAKE) -f CMakeFiles/Makefile2 lib/actors/CMakeFiles/combatants.dir/rule
-.PHONY : lib/actors/CMakeFiles/combatants.dir/rule
-
-# Convenience name for target.
-combatants: lib/actors/CMakeFiles/combatants.dir/rule
-.PHONY : combatants
-
-# fast build rule for target.
-combatants/fast:
-	cd /Users/hntergren3/Development/experimetal_rpg_goodness && $(MAKE) -f lib/actors/CMakeFiles/combatants.dir/build.make lib/actors/CMakeFiles/combatants.dir/build
-.PHONY : combatants/fast
-
-actor.o: actor.cpp.o
-.PHONY : actor.o
-
-# target to build an object file
-actor.cpp.o:
-	cd /Users/hntergren3/Development/experimetal_rpg_goodness && $(MAKE) -f lib/actors/CMakeFiles/combatants.dir/build.make lib/actors/CMakeFiles/combatants.dir/actor.cpp.o
-.PHONY : actor.cpp.o
-
-actor.i: actor.cpp.i
-.PHONY : actor.i
-
-# target to preprocess a source file
-actor.cpp.i:
-	cd /Users/hntergren3/Development/experimetal_rpg_goodness && $(MAKE) -f lib/actors/CMakeFiles/combatants.dir/build.make lib/actors/CMakeFiles/combatants.dir/actor.cpp.i
-.PHONY : actor.cpp.i
-
-actor.s: actor.cpp.s
-.PHONY : actor.s
-
-# target to generate assembly for a file
-actor.cpp.s:
-	cd /Users/hntergren3/Development/experimetal_rpg_goodness && $(MAKE) -f lib/actors/CMakeFiles/combatants.dir/build.make lib/actors/CMakeFiles/combatants.dir/actor.cpp.s
-.PHONY : actor.cpp.s
-
-combatant.o: combatant.cpp.o
-.PHONY : combatant.o
-
-# target to build an object file
-combatant.cpp.o:
-	cd /Users/hntergren3/Development/experimetal_rpg_goodness && $(MAKE) -f lib/actors/CMakeFiles/combatants.dir/build.make lib/actors/CMakeFiles/combatants.dir/combatant.cpp.o
-.PHONY : combatant.cpp.o
-
-combatant.i: combatant.cpp.i
-.PHONY : combatant.i
-
-# target to preprocess a source file
-combatant.cpp.i:
-	cd /Users/hntergren3/Development/experimetal_rpg_goodness && $(MAKE) -f lib/actors/CMakeFiles/combatants.dir/build.make lib/actors/CMakeFiles/combatants.dir/combatant.cpp.i
-.PHONY : combatant.cpp.i
-
-combatant.s: combatant.cpp.s
-.PHONY : combatant.s
-
-# target to generate assembly for a file
-combatant.cpp.s:
-	cd /Users/hntergren3/Development/experimetal_rpg_goodness && $(MAKE) -f lib/actors/CMakeFiles/combatants.dir/build.make lib/actors/CMakeFiles/combatants.dir/combatant.cpp.s
-.PHONY : combatant.cpp.s
-
-stats_set.o: stats_set.cpp.o
-.PHONY : stats_set.o
-
-# target to build an object file
-stats_set.cpp.o:
-	cd /Users/hntergren3/Development/experimetal_rpg_goodness && $(MAKE) -f lib/actors/CMakeFiles/combatants.dir/build.make lib/actors/CMakeFiles/combatants.dir/stats_set.cpp.o
-.PHONY : stats_set.cpp.o
-
-stats_set.i: stats_set.cpp.i
-.PHONY : stats_set.i
-
-# target to preprocess a source file
-stats_set.cpp.i:
-	cd /Users/hntergren3/Development/experimetal_rpg_goodness && $(MAKE) -f lib/actors/CMakeFiles/combatants.dir/build.make lib/actors/CMakeFiles/combatants.dir/stats_set.cpp.i
-.PHONY : stats_set.cpp.i
-
-stats_set.s: stats_set.cpp.s
-.PHONY : stats_set.s
-
-# target to generate assembly for a file
-stats_set.cpp.s:
-	cd /Users/hntergren3/Development/experimetal_rpg_goodness && $(MAKE) -f lib/actors/CMakeFiles/combatants.dir/build.make lib/actors/CMakeFiles/combatants.dir/stats_set.cpp.s
-.PHONY : stats_set.cpp.s
-
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
 	@echo "... all (the default if no target is provided)"
 	@echo "... clean"
 	@echo "... depend"
-	@echo "... combatants"
 	@echo "... edit_cache"
 	@echo "... install"
 	@echo "... install/local"
 	@echo "... install/strip"
 	@echo "... list_install_components"
 	@echo "... rebuild_cache"
-	@echo "... actor.o"
-	@echo "... actor.i"
-	@echo "... actor.s"
-	@echo "... combatant.o"
-	@echo "... combatant.i"
-	@echo "... combatant.s"
-	@echo "... stats_set.o"
-	@echo "... stats_set.i"
-	@echo "... stats_set.s"
 .PHONY : help
 
 

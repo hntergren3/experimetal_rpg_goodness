@@ -8,7 +8,7 @@ actor_t::actor_t(const std::string name, const hit_point_t max){
 actor_t::actor_t(const actor_t& rhs){
 	m_name = rhs.m_name;
 	m_max_hp = rhs.m_max_hp;
-	m_cur_hp = m_cur_hp;
+	m_cur_hp = rhs.m_cur_hp;
 }
 
 hit_point_t actor_t::cur_hp() const {
