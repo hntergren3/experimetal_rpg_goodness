@@ -1,3 +1,0 @@
-/Users/hntergren3/Development/experimetal_rpg_goodness/lib/battle/CMakeFiles/battle.dir
-/Users/hntergren3/Development/experimetal_rpg_goodness/lib/actors/CMakeFiles/combatants.dir
-/Users/hntergren3/Development/experimetal_rpg_goodness/main/CMakeFiles/rpg.dir

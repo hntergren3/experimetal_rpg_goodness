@@ -1,2 +1,0 @@
-/usr/bin/ar cr libcombatants.a  CMakeFiles/combatants.dir/actor.cpp.o CMakeFiles/combatants.dir/combatant.cpp.o CMakeFiles/combatants.dir/stats_set.cpp.o
-/usr/bin/ranlib libcombatants.a
