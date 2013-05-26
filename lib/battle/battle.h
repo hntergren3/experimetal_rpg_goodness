@@ -4,6 +4,7 @@
 
 #include "../actors/combatant.h"
 #include "../actors/enemy.h"
+#include "../actors/player.h"
 #include "../actors/stats_set.h"
 
 #define CT_ACTION_THRESHOLD 1000
@@ -26,7 +27,8 @@ class SortedCombatantQueue : boost::noncopyable {
   public:
 
     SortedCombatantQueue(party_vec p, enemy_vec e);
-    ~SortedCombatantQueue();
+    ~SortedCombatantQueue(){
+    }
 
     boost::shared_ptr<combatant_t> retrieveNextActor(); 
     bool battleContinues() const;
@@ -50,9 +52,16 @@ class SortedCombatantQueue : boost::noncopyable {
 class Battle : boost::noncopyable{
   public:
     Battle(party_vec&);
+    Battle(party_vec&, enemy_vec&);
     void main_loop();
-    ~Battle(); //distribute rewards!
+
+    //TODO: distribute rewards here
+    ~Battle(){
+       std::cout << "would divvy experience, etc, here" << std::endl;
+    }
 
   private:
+
+    enemy_vec generateEnemies();
     boost::shared_ptr<SortedCombatantQueue> m_queue;
 };

@@ -12,7 +12,6 @@ SortedCombatantQueue::SortedCombatantQueue(party_vec p, enemy_vec e){
  *not true?!
  */
 boost::shared_ptr<combatant_t> SortedCombatantQueue::retrieveNextActor(){
-
   while(maxCtMeter()->ct_meter() < actionThreshold()){
     updateQueue();
   }
@@ -71,8 +70,26 @@ bool SortedCombatantQueue::battleContinues() const{
   return (enemiesLeft() && partyLeft());
 }
 
+Battle::Battle(party_vec& p){
+  m_queue.reset(new SortedCombatantQueue(p, generateEnemies()));
+}
+
+Battle::Battle(party_vec& p, enemy_vec& e){
+  m_queue.reset(new SortedCombatantQueue(p, e));
+}
+
+enemy_vec Battle::generateEnemies(){
+
+  enemy_vec e;
+  enemy_t placeholder("Gob", 1, 1, 1, 1, 1);
+  e.push_back(placeholder);
+  return e;
+
+}
+
 void Battle::main_loop(){
+
   while(m_queue->battleContinues()){
-   m_queue->retrieveNextActor()->act(); 
+    m_queue->retrieveNextActor()->act(); 
   }
 }

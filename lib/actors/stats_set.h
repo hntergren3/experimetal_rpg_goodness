@@ -12,7 +12,8 @@ class stats_set_t{
 		stats_set_t();
 		stats_set_t(phys_t, mag_t, speed_t, acc_t);
 		stats_set_t(const stats_set_t&);
-		~stats_set_t();
+		~stats_set_t(){
+    }
 
 		speed_t speed () const ;
 		acc_t accuracy() const;

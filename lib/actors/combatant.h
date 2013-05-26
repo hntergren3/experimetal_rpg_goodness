@@ -14,7 +14,8 @@ class combatant_t : public actor_t {
   combatant_t();
 	combatant_t(std::string name);
 	combatant_t(std::string name, hit_point_t hp, speed_t s, acc_t a, phys_t p, mag_t m);
-	~combatant_t();
+	~combatant_t(){
+  }
 	combatant_t(const combatant_t& other);
 
 	stats_set_t  stats_set() const;
