@@ -4,8 +4,8 @@
 //#include <string>
 #include "definitions.h"
 
-#define MAX_HP 1000000 //1 million
-#define MIN_HP 100
+static const hit_point_t MAX_HP = 1000000; //1 mil
+static const hit_point_t MIN_HP = 0;
 
 class actor_t {
 	public:
@@ -30,12 +30,6 @@ class actor_t {
 		void dec_max_hp(hit_point_t amount);
     void set_cur_hp(hit_point_t hp);
 
-    //make life easier when I want to do min/max checking...this will probably end up
-		//in some kind of overall utility file at some point, though then I'll have to
-		//provide ways to get a references for various values instead of just values...bleh
-    template <class T>
-		void set_stat(T& my_stat, const T in_stat, int min, int max);
-
 		void inc_cur_hp(hit_point_t amount);
 		void dec_cur_hp(hit_point_t amount);
 
@@ -44,10 +38,9 @@ class actor_t {
 		//functions...we'll see
 		void operator+(const hit_point_t amount);
 		void operator-(const hit_point_t amount);
-    void operator=(const actor_t& rhs){
-      std::cout << "name()? " << rhs.name() << std::endl;
-      m_name = rhs.name();
-    }
+    //void operator=(const actor_t& rhs){
+    //  m_name = rhs.name();
+    //}
 	private:
 	  std::string m_name;
     hit_point_t m_max_hp;

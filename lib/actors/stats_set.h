@@ -1,10 +1,16 @@
 #ifndef STATS_SET_H
 #define STATS_SET_H
 
-#define MIN_STAT 10
-#define MAX_STAT 1000
-
 #include "definitions.h"
+static const speed_t MIN_SPEED = 1;
+static const speed_t MAX_SPEED = 100;
+static const acc_t MIN_ACC = 1;
+static const acc_t MAX_ACC = 100;
+static const phys_t MIN_PHYS = 1;
+static const phys_t MAX_PHYS = 100;
+static const mag_t MIN_MAG = 1;
+static const mag_t MAX_MAG = 100; 
+
 
 class stats_set_t{
 	public:
@@ -18,9 +24,6 @@ class stats_set_t{
 		acc_t accuracy() const;
 		phys_t phys() const;
 		mag_t mag() const;
-
-        template <class T>
-		void set_stat(T& my_stat, const T in_stat, int min, int max);
 
 		void set_speed(speed_t speed);
 		void set_accuracy(acc_t acc);

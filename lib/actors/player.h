@@ -16,7 +16,7 @@ class player_t : public combatant_t {
     }
 
     void act() override final {
-      std::cout << "player action" << std::endl;
+      std::cout << name() << " has " << cur_hp() << " and is acting." << std::endl;
       set_ct_meter(0);
     }
 

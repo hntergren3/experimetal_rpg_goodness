@@ -40,8 +40,14 @@ class SortedCombatantQueue : boost::noncopyable {
     bool battleContinues() const;
 
   private:
-    bool enemiesLeft() const;
-    bool partyLeft() const;
+    template <typename VecType>
+    bool stillAlive(VecType v) const{
+      for(auto const& a: v){
+        if(a.cur_hp() > 0)
+          return true;
+      }
+      return false;
+    }
     speed_t actionThreshold() const;
     void maxCtMeter(combatant_t*&);
     template <class T>

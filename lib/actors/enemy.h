@@ -12,8 +12,9 @@ class enemy_t : public combatant_t{
 
      void act() override final{
      
-       std::cout << "I am an enemy acting." << std::endl;
+       std::cout << name() << " is an acting enemy who has " << cur_hp() << " hp" << std::endl;
        dec_cur_hp(10); //to ensure test battle actually ends, since no one can do damage
+       std::cout << name() << " now has " << cur_hp() << " hp" << std::endl;
        set_ct_meter(0);
      
      }

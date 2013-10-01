@@ -29,18 +29,18 @@ mag_t stats_set_t::mag() const{
 
 void stats_set_t::set_speed(speed_t speed){
 	
-	    set_stat(m_speed, speed, MIN_STAT, MAX_STAT);
+	    set_stat(m_speed, speed, MIN_SPEED, MAX_SPEED);
 }
 
 void stats_set_t::set_accuracy(acc_t acc){
-	    set_stat(m_accuracy, acc, MIN_STAT, MAX_STAT);
+	    set_stat(m_accuracy, acc, MIN_ACC, MAX_ACC);
 }
 
 void stats_set_t::set_phys(phys_t phys){
-	    set_stat(m_phys, phys, MIN_STAT, MAX_STAT);
+	    set_stat(m_phys, phys, MIN_PHYS, MAX_PHYS);
 }
 void stats_set_t::set_mag(mag_t mag){
-	    set_stat(m_mag, mag, MIN_STAT, MAX_STAT);
+	    set_stat(m_mag, mag, MIN_MAG, MAX_MAG);
 }
 
 void stats_set_t::inc_speed(speed_t amount){
@@ -80,10 +80,4 @@ bool stats_set_t::operator==(const stats_set_t& other){
 	return ( phys() == other.phys() && mag() == other.mag() && 
 	         accuracy() == other.accuracy() && speed() == other.speed() );
 
-}
-
-template <class T>
-void stats_set_t::set_stat(T& my_stat, const T in_stat, int min, int max){
-	    in_stat > max ? my_stat = max : my_stat = min;
-		    if(my_stat < min)  my_stat = min;
 }

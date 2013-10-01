@@ -32,7 +32,7 @@ void SortedCombatantQueue::updateQueue(){
 }
 
 bool SortedCombatantQueue::sortByCt(const combatant_t& a, const combatant_t& b){
-  std::cout << (a.ct_meter() > b.ct_meter()) << std::endl;
+  //std::cout << (a.ct_meter() > b.ct_meter()) << std::endl;
   return (a.ct_meter() > b.ct_meter());
 }
 
@@ -60,16 +60,8 @@ speed_t SortedCombatantQueue::actionThreshold() const{
   return m_action_threshold;
 }
 
-bool SortedCombatantQueue::enemiesLeft() const{
-  return !m_internal_enemy_vec.empty();
-}
-
-bool SortedCombatantQueue::partyLeft() const{
-  return !m_internal_party_vec.empty();
-}
-
 bool SortedCombatantQueue::battleContinues() const{
-  return (enemiesLeft() && partyLeft());
+  return (stillAlive(m_internal_enemy_vec)  and stillAlive(m_internal_party_vec));
 }
 
 Battle::Battle(party_vec& p, enemy_vec& e)
