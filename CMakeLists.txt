@@ -1,6 +1,8 @@
-#CXX=clang++
 cmake_minimum_required (VERSION 2.8)
+SET (CMAKE_CXX_COMPILER "/usr/local/bin/g++")
+#SET (CMAKE_CXX_FLAGS "-std=c++11")
+add_definitions(-std=c++11)
 project (TestRpgThing)
-include_directories("/opt/local/include/")
+include_directories("/usr/local/include/")
 add_subdirectory(lib)
 add_subdirectory(main)

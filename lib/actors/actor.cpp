@@ -5,12 +5,6 @@ actor_t::actor_t(const std::string name, const hit_point_t max){
 	m_cur_hp = max;
 }
 
-actor_t::actor_t(const actor_t& rhs){
-	m_name = rhs.m_name;
-	m_max_hp = rhs.m_max_hp;
-	m_cur_hp = rhs.m_cur_hp;
-}
-
 hit_point_t actor_t::cur_hp() const {
 	return m_cur_hp;
 }
@@ -28,7 +22,8 @@ hit_point_t * actor_t::mutable_max_hp(){
 }
 
 std::string actor_t::name() const {
-	return m_name;
+	//return m_name;
+  return "segfault averted?";
 }
 
 void actor_t::set_max_hp(hit_point_t hp){

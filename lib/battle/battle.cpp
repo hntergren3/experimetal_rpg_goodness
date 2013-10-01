@@ -1,5 +1,9 @@
 #include "battle.h"
 
+void defeat(){
+  std::cout << "You lose.";
+}
+
 SortedCombatantQueue::SortedCombatantQueue(party_vec p, enemy_vec e){
   m_internal_enemy_vec = e;
   m_internal_party_vec = p;
@@ -11,47 +15,52 @@ SortedCombatantQueue::SortedCombatantQueue(party_vec p, enemy_vec e){
  *left. After all, why are we still fighting if that's
  *not true?!
  */
-boost::shared_ptr<combatant_t> SortedCombatantQueue::retrieveNextActor(){
-  while(maxCtMeter()->ct_meter() < actionThreshold()){
-    updateQueue();
-  }
+void SortedCombatantQueue::retrieveNextActor(combatant_t& next){
 
-  return maxCtMeter();
+  maxCtMeter(next);
+
+  while(next.ct_meter() < actionThreshold()){
+    updateQueue();
+    std::cout << "need to do another loop" << std::endl;
+    maxCtMeter(next);
+    std::cout << "maxct didn't kill it yay" << std::endl;
+  }
 
 }
 
 void SortedCombatantQueue::updateQueue(){
+  std::cout << "party" << std::endl;
   updateCombatantVectorByCt(m_internal_party_vec);
+  std::cout << "enemy" << std::endl;
   updateCombatantVectorByCt(m_internal_enemy_vec);
+  std::cout << "queue updated " << std::endl;
 }
 
 bool SortedCombatantQueue::sortByCt(const combatant_t& a, const combatant_t& b){
+  std::cout << "sorty" << std::endl;
+  std::cout << "a.ct " << a.ct_meter() << std::endl;
+  std::cout << "b.ct " << b.ct_meter() << std::endl;
+  std::cout << (a.ct_meter() > b.ct_meter()) << std::endl;
   return (a.ct_meter() > b.ct_meter());
 }
 
 template <class T>
 void SortedCombatantQueue::updateCombatantVectorByCt(T& vec){
 
-  for(typename T::iterator it = vec.begin(); it != vec.end(); it++){
-    it->increment_ct_meter();
+  for(auto& fighter: vec){
+    fighter.increment_ct_meter();
   }
 
+  std::cout << "starting sort" << std::endl;
   std::sort(vec.begin(), vec.end(), sortByCt);
+  std::cout << "done with sort?" << std::endl;
 }
 
-boost::shared_ptr<combatant_t> SortedCombatantQueue::maxCtMeter(){
-
-  boost::shared_ptr<combatant_t> retChar;
-
-  if(m_internal_enemy_vec[0].ct_meter() > m_internal_party_vec[0].ct_meter()){
-    retChar.reset(&m_internal_enemy_vec[0]);
-  }
-  else {
-    retChar.reset(&m_internal_party_vec[0]);
-  }
-
-  return retChar;
-
+void SortedCombatantQueue::maxCtMeter(combatant_t& next){
+  if(m_internal_party_vec.front().ct_meter() >= m_internal_enemy_vec.front().ct_meter())
+    next = m_internal_party_vec.front();
+  else
+    next = m_internal_enemy_vec.front();
 }
 
 speed_t SortedCombatantQueue::actionThreshold() const{
@@ -70,26 +79,20 @@ bool SortedCombatantQueue::battleContinues() const{
   return (enemiesLeft() && partyLeft());
 }
 
-Battle::Battle(party_vec& p){
-  m_queue.reset(new SortedCombatantQueue(p, generateEnemies()));
-}
-
-Battle::Battle(party_vec& p, enemy_vec& e){
-  m_queue.reset(new SortedCombatantQueue(p, e));
-}
-
-enemy_vec Battle::generateEnemies(){
-
-  enemy_vec e;
-  enemy_t placeholder("Gob", 1, 1, 1, 1, 1);
-  e.push_back(placeholder);
-  return e;
-
+Battle::Battle(party_vec& p, enemy_vec& e)
+: m_party_vec_ptr(&p)
+, m_enemy_vec_ptr(&e)
+, m_queue(std::make_shared<SortedCombatantQueue>(p, e))
+{
 }
 
 void Battle::main_loop(){
 
+  combatant_t meh;
   while(m_queue->battleContinues()){
-    m_queue->retrieveNextActor()->act(); 
+    std::cout << "retrieving" << std::endl;
+    m_queue->retrieveNextActor(meh);
+    std::cout << "retrieval didn't kill it, either" << std::endl;
+    meh.act(); 
   }
 }

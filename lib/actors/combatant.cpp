@@ -6,19 +6,15 @@ combatant_t::combatant_t() : actor_t("caballo sin nombre", 1) {
 combatant_t::combatant_t(std::string name) :
 actor_t(name, 1)
 {
+  m_ct_meter = 0;
 }
 
 combatant_t::combatant_t(std::string name, hit_point_t hp, speed_t s, acc_t a, phys_t p, mag_t m)
 : actor_t(name, hp) {
+  m_ct_meter = 0;
 }
 
-combatant_t::combatant_t(const combatant_t& other)
-: actor_t(other.name(), other.max_hp())
-{
-	m_stats_set = other.stats_set();
-}
-	
-experience_t combatant_t::xp() const{
+exp_t combatant_t::xp() const{
 	return m_xp;
 }
 
@@ -40,11 +36,6 @@ bool combatant_t::operator!=(const combatant_t them) const{
 
 bool combatant_t::operator>(const combatant_t them) const{
   return this->ct_meter() > them.ct_meter();
-}
-
-void combatant_t::act(){
-  std::cout << "my turn to act!" << std::endl;
-  reset_ct_meter();
 }
 
 void combatant_t::reset_ct_meter(){

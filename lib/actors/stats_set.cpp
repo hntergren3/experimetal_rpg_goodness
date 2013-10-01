@@ -14,12 +14,6 @@ stats_set_t::stats_set_t(phys_t p, mag_t m, speed_t s, acc_t a){
 	set_speed( s );
 }
 
-stats_set_t::stats_set_t(const stats_set_t& other){
-
-	*this = other;
-
-}
-
 speed_t stats_set_t::speed () const {
 	    return m_speed;
 }

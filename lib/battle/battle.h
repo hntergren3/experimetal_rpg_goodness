@@ -9,8 +9,15 @@
 
 #define CT_ACTION_THRESHOLD 1000
 
-typedef std::vector<combatant_t> enemy_vec;
-typedef std::vector<combatant_t> party_vec; 
+#ifndef BATTLE_H
+#define BATTLE_H
+
+using party_vec = std::vector<player_t>;
+using enemy_vec = std::vector<enemy_t>;
+using party_vec_ptr = party_vec*;
+using enemy_vec_ptr = enemy_vec*;
+
+void defeat();
 
 /*
  * SortedCombatantQueue takes the party and enemy
@@ -27,17 +34,16 @@ class SortedCombatantQueue : boost::noncopyable {
   public:
 
     SortedCombatantQueue(party_vec p, enemy_vec e);
-    ~SortedCombatantQueue(){
-    }
+    ~SortedCombatantQueue() = default;
 
-    boost::shared_ptr<combatant_t> retrieveNextActor(); 
+    void retrieveNextActor(combatant_t&); 
     bool battleContinues() const;
 
   private:
     bool enemiesLeft() const;
     bool partyLeft() const;
     speed_t actionThreshold() const;
-    boost::shared_ptr<combatant_t> maxCtMeter();
+    void maxCtMeter(combatant_t&);
     template <class T>
     void updateCombatantVectorByCt(T&);
     static bool sortByCt(const combatant_t&, const combatant_t&);
@@ -51,17 +57,29 @@ class SortedCombatantQueue : boost::noncopyable {
 
 class Battle : boost::noncopyable{
   public:
-    Battle(party_vec&);
     Battle(party_vec&, enemy_vec&);
     void main_loop();
 
-    //TODO: distribute rewards here
     ~Battle(){
-       std::cout << "would divvy experience, etc, here" << std::endl;
+      if(m_victory){ //distribute rewards; would like to do the 
+        for(auto const& e: *m_enemy_vec_ptr){
+          //TODO: add gold to Party's coffers
+          //TODO: drop items
+          for(auto& p: *m_party_vec_ptr){
+            p.increment_xp(e.xp());
+          }
+        }
+      } else {
+        defeat();
+      }
     }
 
   private:
 
-    enemy_vec generateEnemies();
-    boost::shared_ptr<SortedCombatantQueue> m_queue;
+    party_vec_ptr m_party_vec_ptr = nullptr; //
+    enemy_vec_ptr m_enemy_vec_ptr = nullptr;
+    bool m_victory = false;
+    std::shared_ptr<SortedCombatantQueue> m_queue;
 };
+
+#endif
