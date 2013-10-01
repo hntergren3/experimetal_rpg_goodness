@@ -17,6 +17,7 @@ class player_t : public combatant_t {
 
     void act() override final {
       std::cout << "player action" << std::endl;
+      set_ct_meter(0);
     }
 
 	  bool increment_xp(exp_t e) { //returned bool is whether or not there's a level up waiting

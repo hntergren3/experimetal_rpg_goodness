@@ -36,14 +36,14 @@ class SortedCombatantQueue : boost::noncopyable {
     SortedCombatantQueue(party_vec p, enemy_vec e);
     ~SortedCombatantQueue() = default;
 
-    void retrieveNextActor(combatant_t&); 
+    void retrieveNextActor(combatant_t*&); 
     bool battleContinues() const;
 
   private:
     bool enemiesLeft() const;
     bool partyLeft() const;
     speed_t actionThreshold() const;
-    void maxCtMeter(combatant_t&);
+    void maxCtMeter(combatant_t*&);
     template <class T>
     void updateCombatantVectorByCt(T&);
     static bool sortByCt(const combatant_t&, const combatant_t&);

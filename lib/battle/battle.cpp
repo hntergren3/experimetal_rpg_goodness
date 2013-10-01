@@ -15,31 +15,23 @@ SortedCombatantQueue::SortedCombatantQueue(party_vec p, enemy_vec e){
  *left. After all, why are we still fighting if that's
  *not true?!
  */
-void SortedCombatantQueue::retrieveNextActor(combatant_t& next){
+ //i am going to cs hell for passing a reference to a pointer
+void SortedCombatantQueue::retrieveNextActor(combatant_t *& next){
 
   maxCtMeter(next);
-
-  while(next.ct_meter() < actionThreshold()){
+  while(next->ct_meter() < actionThreshold()){
     updateQueue();
-    std::cout << "need to do another loop" << std::endl;
     maxCtMeter(next);
-    std::cout << "maxct didn't kill it yay" << std::endl;
   }
 
 }
 
 void SortedCombatantQueue::updateQueue(){
-  std::cout << "party" << std::endl;
   updateCombatantVectorByCt(m_internal_party_vec);
-  std::cout << "enemy" << std::endl;
   updateCombatantVectorByCt(m_internal_enemy_vec);
-  std::cout << "queue updated " << std::endl;
 }
 
 bool SortedCombatantQueue::sortByCt(const combatant_t& a, const combatant_t& b){
-  std::cout << "sorty" << std::endl;
-  std::cout << "a.ct " << a.ct_meter() << std::endl;
-  std::cout << "b.ct " << b.ct_meter() << std::endl;
   std::cout << (a.ct_meter() > b.ct_meter()) << std::endl;
   return (a.ct_meter() > b.ct_meter());
 }
@@ -51,16 +43,17 @@ void SortedCombatantQueue::updateCombatantVectorByCt(T& vec){
     fighter.increment_ct_meter();
   }
 
-  std::cout << "starting sort" << std::endl;
   std::sort(vec.begin(), vec.end(), sortByCt);
-  std::cout << "done with sort?" << std::endl;
 }
 
-void SortedCombatantQueue::maxCtMeter(combatant_t& next){
+void SortedCombatantQueue::maxCtMeter(combatant_t *& next){
   if(m_internal_party_vec.front().ct_meter() >= m_internal_enemy_vec.front().ct_meter())
-    next = m_internal_party_vec.front();
+    next = &m_internal_party_vec.front();
+    //next = &m_internal_party_vec[0];
   else
-    next = m_internal_enemy_vec.front();
+    //next = &m_internal_enemy_vec[0];
+    next = &m_internal_enemy_vec.front();
+  next->ct_meter();
 }
 
 speed_t SortedCombatantQueue::actionThreshold() const{
@@ -88,11 +81,9 @@ Battle::Battle(party_vec& p, enemy_vec& e)
 
 void Battle::main_loop(){
 
-  combatant_t meh;
+  combatant_t* meh = nullptr;
   while(m_queue->battleContinues()){
-    std::cout << "retrieving" << std::endl;
     m_queue->retrieveNextActor(meh);
-    std::cout << "retrieval didn't kill it, either" << std::endl;
-    meh.act(); 
+    (*meh).act(); 
   }
 }

@@ -14,6 +14,7 @@ int main(){
 
   e.emplace_back("Bossman", 300, 10, 10, 10, 10);
 
+  Battle b(p, e);
   b.main_loop();
 
   std::cout << "Well, I compile and link correctly. Do I work? Prolly not." << std::endl;
